@@ -134,7 +134,7 @@ public class Village {
 	
 	 public String installerVendeur(Gaulois vendeur, String produit,int
 			 nbProduit) {
-		 int i, j;
+		 int i;
 		 StringBuilder chaine = new StringBuilder();
 		 chaine.append(vendeur.getNom() + " cherche un endroit pour vendre " + nbProduit + " " + produit + "\n");
 		 Etal[] etals = marche.getEtals();
@@ -165,5 +165,7 @@ public class Village {
 		}
 		return chaine.toString();
 	 }
-
+	 
+	 
+	 
 	}
