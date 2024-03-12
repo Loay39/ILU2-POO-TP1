@@ -9,6 +9,7 @@ public class Village {
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
 	private Marche marche;
+	private boolean estChefExistant = false;
 
 	public Village(String nom, int nbVillageoisMaximum, int nbEtals) {
 		this.nom = nom;
@@ -22,6 +23,7 @@ public class Village {
 
 	public void setChef(Chef chef) {
 		this.chef = chef;
+		estChefExistant = true;
 	}
 	
 	private static class Marche {
@@ -125,8 +127,11 @@ public class Village {
 		return null;
 	}
 
-	public String afficherVillageois() {
+	public String afficherVillageois() throws VillageSansChefException {
 		StringBuilder chaine = new StringBuilder();
+		if (! estChefExistant) {
+			throw new VillageSansChefException("Village sans chef ");
+		}
 		if (nbVillageois < 1) {
 			chaine.append("Il n'y a encore aucun habitant au village du chef "
 					+ chef.getNom() + ".\n");
